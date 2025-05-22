@@ -1,0 +1,20 @@
+# 忽略所有常见的视频文件类型
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.flv
+*.wmv
+*.webm
+
+# 忽略 backup 文件夹及其所有内容
+backup/
+backup/**
+
+# 忽略 geo 文件夹及其所有内容
+geo/
+geo/**
+
+# 忽略 Render 文件夹及其所有内容
+Render/
+Render/**
