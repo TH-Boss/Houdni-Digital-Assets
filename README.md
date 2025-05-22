@@ -31,4 +31,10 @@ This is a repository for houdini nodes
 **演示视频：**  
 [📹 使用演示]([videos/CurveScatter_Demo.mp4](https://www.bilibili.com/video/BV1pa4y1K7HR/?spm_id_from=333.1391.0.0&vd_source=9edcf7b007daf6ce85a2a97aaff93230))
 
+
+### 2. `energ`
+
+**说明：**  
+螺旋拉丝吸引粒子项目
+
 ---
