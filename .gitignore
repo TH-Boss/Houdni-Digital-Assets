@@ -1,4 +1,4 @@
-# 忽略所有常见的视频文件类型
+# 忽略所有常见视频文件（无论路径）
 *.mp4
 *.mov
 *.avi
@@ -7,14 +7,14 @@
 *.wmv
 *.webm
 
-# 忽略 backup 文件夹及其所有内容
-backup/
-backup/**
+# 忽略任意位置下名为 backup 的文件夹及其内容
+**/backup/
+**/backup/**
 
-# 忽略 geo 文件夹及其所有内容
-geo/
-geo/**
+# 忽略任意位置下名为 geo 的文件夹及其内容
+**/geo/
+**/geo/**
 
-# 忽略 Render 文件夹及其所有内容
-Render/
-Render/**
+# 忽略任意位置下名为 Render 的文件夹及其内容
+**/Render/
+**/Render/**
