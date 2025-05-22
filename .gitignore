@@ -7,6 +7,10 @@
 *.wmv
 *.webm
 
+# 忽略产出图片
+*.exr
+
+
 # 忽略任意位置下名为 backup 的文件夹及其内容
 **/backup/
 **/backup/**
