@@ -8,20 +8,21 @@ define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
             <dock id="" hideTitles="1" activePageId="Toolbar.1">
                 <page id="Toolbar.1"/>
             </dock>
-            <split size="1894" stretch="1"/>
+            <split size="1657" stretch="1"/>
             <splitter orientation="2">
                 <split size="778"/>
-                <dock id="" activePageId="Viewer.1" focus="true">
+                <dock id="" activePageId="Viewer.2">
                     <page id="Viewer.1"/>
+                    <page id="Viewer.2"/>
                 </dock>
                 <split size="548"/>
-                <dock id="" activePageId="DAG.1">
+                <dock id="" activePageId="DAG.1" focus="true">
                     <page id="DAG.1"/>
                     <page id="Curve Editor.1"/>
                     <page id="DopeSheet.1"/>
                 </dock>
             </splitter>
-            <split size="615"/>
+            <split size="852"/>
             <dock id="" activePageId="Properties.1">
                 <page id="Properties.1"/>
                 <page id="uk.co.thefoundry.backgroundrenderview.1"/>
@@ -34,7 +35,7 @@ define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
 Root {
  inputs 0
  name C:/Users/LG/RiderProjects/ZGameAnalyzers/Houdni-Digital-Assets/HIP/energ/prt.nk
- frame 140
+ frame 116
  first_frame 0
  last_frame 240
  lock_range true
@@ -129,7 +130,6 @@ MergeExpression {
 Grade {
  mix {{"(frame >= 140 && frame <= 150) ? 1 : 0"}}
  name Grade1
- selected true
  xpos -189
  ypos 34
 }
@@ -167,7 +167,7 @@ Write {
  view sRGB
  name Write3
  xpos -271
- ypos 153
+ ypos 152
 }
 Crop {
  box {0 0 1920 1080}
@@ -990,16 +990,16 @@ Merge2 {
  inputs 2
  operation plus
  name Merge1
- xpos -551
- ypos 531
+ xpos -592
+ ypos 521
 }
 set N34dd1000 [stack 0]
 ColorCorrect {
  saturation {0.132618 1.2 0 1}
  saturation_panelDropped true
  name ColorCorrect1
- xpos -189
- ypos 555
+ xpos -299
+ ypos 578
 }
 set N34dd1400 [stack 0]
 ColorCorrect {
@@ -1515,14 +1515,25 @@ Merge2 {
  xpos -1
  ypos 429
 }
+push $N9ae5d000
+Viewer {
+ frame 116
+ frame_range 90-240
+ frame_range_lock true
+ monitorOutNDISenderName "Nuke - untitled - Viewer1"
+ monitorOutOutputTransform rec709
+ name Viewer1
+ xpos -489
+ ypos 121
+}
 push $N34dd1400
 ColorCorrect {
  saturation {0 0 1.6 2.48}
  saturation_panelDropped true
  contrast 1.42
  name ColorCorrect4
- xpos -323
- ypos 646
+ xpos -319
+ ypos 689
 }
 Write {
  file C:/houdiniBakup/result.mov
@@ -1543,30 +1554,20 @@ Write {
  first 0
  last 620
  checkHashOnRead false
- version 14
+ version 15
  ocioColorspace scene_linear
  display default
  view sRGB
  name Write4
- xpos -375
- ypos 714
+ xpos -384
+ ypos 802
 }
 Viewer {
- frame 0
- frame_range 0-620
- monitorOutNDISenderName "Nuke - untitled - Viewer1"
- name Viewer2
- xpos -533
- ypos 770
-}
-push $N9ae5d000
-Viewer {
- frame 140
- frame_range 90-240
- frame_range_lock true
- monitorOutNDISenderName "Nuke - untitled - Viewer1"
+ frame 116
+ frame_range 0-240
+ monitorOutNDISenderName "Nuke - prt - Viewer2"
  monitorOutOutputTransform rec709
- name Viewer1
- xpos -489
- ypos 121
+ name Viewer2
+ xpos -609
+ ypos 781
 }
