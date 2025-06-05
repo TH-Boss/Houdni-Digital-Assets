@@ -1540,8 +1540,8 @@ Expression {
  expr1 0
  expr2 0
  name Expression1
- xpos -330
- ypos 814
+ xpos -317
+ ypos 804
 }
 Shuffle2 {
  fromInput1 {{0} B}
@@ -1569,6 +1569,12 @@ Invert {
  xpos -342
  ypos 929
 }
+Grade {
+ multiply 0.5
+ name Grade6
+ xpos -334
+ ypos 1005
+}
 Write {
  file C:/houdiniBakup/result.mov
  file_type mov
@@ -1589,13 +1595,13 @@ Write {
  last 240
  use_limit true
  checkHashOnRead false
- version 15
+ version 20
  ocioColorspace scene_linear
  display default
  view sRGB
  name Write2
- xpos -369
- ypos 1004
+ xpos -388
+ ypos 1080
 }
 Viewer {
  frame 173
@@ -1604,6 +1610,6 @@ Viewer {
  monitorOutNDISenderName "Nuke - prt - Viewer2"
  monitorOutOutputTransform rec709
  name Viewer2
- xpos -412
- ypos 1094
+ xpos -425
+ ypos 1179
 }
