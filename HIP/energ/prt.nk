@@ -1613,3 +1613,17 @@ Viewer {
  xpos -425
  ypos 1179
 }
+StickyNote {
+ inputs 0
+ name StickyNote2
+ label "改变亮度\n"
+ xpos -233
+ ypos 990
+}
+StickyNote {
+ inputs 0
+ name StickyNote1
+ label "反向\n"
+ xpos -230
+ ypos 933
+}
