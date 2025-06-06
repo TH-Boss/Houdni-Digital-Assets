@@ -6,7 +6,7 @@ define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
         <splitter orientation="1">
             <split size="384"/>
             <splitter orientation="1">
-                <split size="384"/>
+                <split size="0"/>
                 <dock id="" hideTitles="1" activePageId="uk.co.thefoundry.scripteditor.2">
                     <page id="uk.co.thefoundry.scripteditor.2"/>
                 </dock>
@@ -30,7 +30,8 @@ define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
 Root {
  inputs 0
  name C:/Users/LG/RiderProjects/ZGameAnalyzers/Houdni-Digital-Assets/HIP/energ/prt.nk
- frame 165
+ frame 160
+ first_frame 0
  last_frame 240
  format "2048 1556 0 0 2048 1556 1 2K_Super_35(full-ap)"
  proxy_type scale
@@ -1479,6 +1480,20 @@ Merge2 {
  xpos 589
  ypos 565
 }
+StickyNote {
+ inputs 0
+ name StickyNote3
+ label "type note here"
+ xpos -175
+ ypos 834
+}
+StickyNote {
+ inputs 0
+ name StickyNote2
+ label "改变亮度\n"
+ xpos -392
+ ypos 1028
+}
 push $N16b5f000
 ColorCorrect {
  saturation {0 0 1.6 2.48}
@@ -1513,17 +1528,63 @@ Write {
  display default
  view sRGB
  name Write4
- xpos 205
- ypos 938
+ xpos 293
+ ypos 941
 }
 Viewer {
- frame 165
+ frame 160
  frame_range 1-240
  monitorOutNDISenderName "Nuke - untitled - Viewer3"
  monitorOutOutputTransform rec709
  name Viewer3
- xpos 144
- ypos 1007
+ xpos 266
+ ypos 1017
+}
+Grade {
+ inputs 0
+ multiply 0.5
+ name Grade6
+ xpos -266
+ ypos 1031
+}
+Write {
+ channels rgba
+ file C:/houdiniBakup/result.mov
+ file_type mov
+ mov64_format "mov (QuickTime / MOV)"
+ mov64_codec h264
+ mov_h264_codec_profile "High 4:2:0 8-bit"
+ mov64_pixel_format {{0}}
+ mov64_quality Best
+ mov64_fast_start true
+ mov64_write_timecode true
+ mov64_gop_size 12
+ mov64_b_frames 0
+ mov64_bitrate 50000
+ mov64_bitrate_tolerance 0
+ mov64_quality_min 1
+ mov64_quality_max 1
+ first 0
+ last 240
+ use_limit true
+ checkHashOnRead false
+ version 21
+ ocioColorspace scene_linear
+ display default
+ view sRGB
+ name Write2
+ xpos -393
+ ypos 1100
+}
+Read {
+ inputs 0
+ file_type png
+ file C:/houdiniBakup/微信图片_20250606105123.png
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ origset true
+ name Read5
+ xpos 9
+ ypos 753
 }
 push $N16b5ec00
 Expression {
@@ -1562,70 +1623,39 @@ Invert {
  xpos -288
  ypos 889
 }
-set N16e21c00 [stack 0]
-Grade {
- multiply 0.5
- name Grade6
- xpos -280
- ypos 965
-}
-Write {
- file C:/houdiniBakup/result.mov
- file_type mov
- mov64_format "mov (QuickTime / MOV)"
- mov64_codec h264
- mov_h264_codec_profile "High 4:2:0 8-bit"
- mov64_pixel_format {{0}}
- mov64_quality Best
- mov64_fast_start true
- mov64_write_timecode true
- mov64_gop_size 12
- mov64_b_frames 0
- mov64_bitrate 50000
- mov64_bitrate_tolerance 0
- mov64_quality_min 1
- mov64_quality_max 1
- first 0
- last 240
- use_limit true
- checkHashOnRead false
- version 20
- ocioColorspace scene_linear
- display default
- view sRGB
- name Write2
- xpos -334
- ypos 1040
-}
-StickyNote {
+Read {
  inputs 0
- name StickyNote2
- label "改变亮度\n"
- xpos -179
- ypos 950
+ file_type exr
+ file C:/houdiniBakup/未标题-1.exr
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ origset true
+ name Read6
+ xpos 158
+ ypos 761
 }
-StickyNote {
- inputs 0
- name StickyNote1
- label "反向\n"
- xpos -176
- ypos 893
+MergeExpression {
+ inputs 2
+ expr0 A.r
+ expr1 A.g
+ expr2 A.b
+ channel3 alpha
+ expr3 A.a*B.r
+ name MergeExpression3
+ xpos -142
+ ypos 972
 }
-push $N16e21c00
+Premult {
+ name Premult1
+ xpos -73
+ ypos 1034
+}
 Viewer {
- frame 165
+ frame 160
  frame_range 90-240
  frame_range_lock true
  monitorOutNDISenderName "Nuke - untitled - Viewer2"
  monitorOutOutputTransform rec709
  name Viewer2
- xpos -79
- ypos 1118
-}
-StickyNote {
- inputs 0
- name StickyNote3
- label "type note here"
- xpos -175
- ypos 834
+ xpos -129
+ ypos 1085
 }
