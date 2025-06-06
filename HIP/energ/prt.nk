@@ -1487,13 +1487,6 @@ StickyNote {
  xpos -175
  ypos 834
 }
-StickyNote {
- inputs 0
- name StickyNote2
- label "改变亮度\n"
- xpos -392
- ypos 1028
-}
 push $N16b5f000
 ColorCorrect {
  saturation {0 0 1.6 2.48}
@@ -1539,42 +1532,6 @@ Viewer {
  name Viewer3
  xpos 266
  ypos 1017
-}
-Grade {
- inputs 0
- multiply 0.5
- name Grade6
- xpos -266
- ypos 1031
-}
-Write {
- channels rgba
- file C:/houdiniBakup/result.mov
- file_type mov
- mov64_format "mov (QuickTime / MOV)"
- mov64_codec h264
- mov_h264_codec_profile "High 4:2:0 8-bit"
- mov64_pixel_format {{0}}
- mov64_quality Best
- mov64_fast_start true
- mov64_write_timecode true
- mov64_gop_size 12
- mov64_b_frames 0
- mov64_bitrate 50000
- mov64_bitrate_tolerance 0
- mov64_quality_min 1
- mov64_quality_max 1
- first 0
- last 240
- use_limit true
- checkHashOnRead false
- version 21
- ocioColorspace scene_linear
- display default
- view sRGB
- name Write2
- xpos -393
- ypos 1100
 }
 Read {
  inputs 0
@@ -1649,6 +1606,41 @@ Premult {
  xpos -73
  ypos 1034
 }
+Grade {
+ multiply 0.5
+ name Grade6
+ xpos -216
+ ypos 1063
+}
+Write {
+ channels rgba
+ file C:/houdiniBakup/result.mov
+ file_type mov
+ mov64_format "mov (QuickTime / MOV)"
+ mov64_codec h264
+ mov_h264_codec_profile "High 4:2:0 8-bit"
+ mov64_pixel_format {{0}}
+ mov64_quality Best
+ mov64_fast_start true
+ mov64_write_timecode true
+ mov64_gop_size 12
+ mov64_b_frames 0
+ mov64_bitrate 50000
+ mov64_bitrate_tolerance 0
+ mov64_quality_min 1
+ mov64_quality_max 1
+ first 0
+ last 240
+ use_limit true
+ checkHashOnRead false
+ version 21
+ ocioColorspace scene_linear
+ display default
+ view sRGB
+ name Write2
+ xpos -353
+ ypos 1095
+}
 Viewer {
  frame 160
  frame_range 90-240
@@ -1656,6 +1648,13 @@ Viewer {
  monitorOutNDISenderName "Nuke - untitled - Viewer2"
  monitorOutOutputTransform rec709
  name Viewer2
- xpos -129
- ypos 1085
+ xpos -422
+ ypos 1163
+}
+StickyNote {
+ inputs 0
+ name StickyNote2
+ label "改变亮度\n"
+ xpos -138
+ ypos 1083
 }
