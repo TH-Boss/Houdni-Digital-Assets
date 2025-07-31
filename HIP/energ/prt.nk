@@ -1,5 +1,5 @@
 #! C:/Program Files/Nuke15.1v5/nuke-15.1.5.dll -nx
-#write_info Write2 file:"C:/houdiniBakup/result.mov" format:"1920 1080 1" chans:":rgba.red:rgba.green:rgba.blue:rgba.alpha:" framerange:"0 240" fps:"0" colorspace:"default (Gamma2.2)" datatype:"unknown" transfer:"unknown" views:"main" colorManagement:"Nuke"
+#write_info Write2 file:"D:/houdiniBakup/result.mov" format:"1920 1080 1" chans:":rgba.red:rgba.green:rgba.blue:rgba.alpha:" framerange:"0 240" fps:"0" colorspace:"default (Gamma2.2)" datatype:"unknown" transfer:"unknown" views:"main" colorManagement:"Nuke"
 version 15.1 v5
 define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
 <layout version="1.0">
@@ -12,8 +12,9 @@ define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
             <split size="1894" stretch="1"/>
             <splitter orientation="2">
                 <split size="774"/>
-                <dock id="" activePageId="Viewer.1">
+                <dock id="" activePageId="Viewer.2">
                     <page id="Viewer.1"/>
+                    <page id="Viewer.2"/>
                 </dock>
                 <split size="544"/>
                 <dock id="" activePageId="DAG.1" focus="true">
@@ -35,7 +36,7 @@ define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
 Root {
  inputs 0
  name C:/Users/16499/Documents/GitHub/Houdni-Digital-Assets/HIP/energ/prt.nk
- frame 106
+ frame 80
  first_frame 0
  last_frame 240
  format "2048 1556 0 0 2048 1556 1 2K_Super_35(full-ap)"
@@ -478,29 +479,31 @@ Read {
  inputs 0
  file_type exr
  file "D:/houdiniBakup/可以接受的最新/新建文件夹 (2)/energ.A1.####.exr"
- format "1920 1080 0 0 1920 1080 1 HD_1080"
+ format "3840 2160 0 0 3840 2160 1 UHD_4K"
+ proxy_format "3840 2160 0 0 3840 2160 1 UHD_4K"
  first 0
  last 240
  origfirst 0
  origlast 240
  origset true
  name Read2
- xpos 49
- ypos -58
+ xpos 60
+ ypos -133
 }
+set Ne80c8000 [stack 0]
 Read {
  inputs 0
  file_type exr
  file D:/houdiniBakup/可以接受的最新/循环新版90-240/energ.A1.####.exr
- format "1920 1080 0 0 1920 1080 1 HD_1080"
+ format "3840 2160 0 0 3840 2160 1 UHD_4K"
  first 90
  last 240
  origfirst 90
  origlast 240
  origset true
  name Read1
- xpos 292
- ypos -78
+ xpos 294
+ ypos -137
 }
 TimeOffset {
  time_offset -20
@@ -524,7 +527,7 @@ Read {
  inputs 0
  file_type exr
  file D:/houdiniBakup/可以接受的最新/循环新版90-240/energ.A1.####.exr
- format "1920 1080 0 0 1920 1080 1 HD_1080"
+ format "3840 2160 0 0 3840 2160 1 UHD_4K"
  first 90
  last 240
  origfirst 90
@@ -1402,6 +1405,13 @@ StickyNote {
  xpos -175
  ypos 834
 }
+StickyNote {
+ inputs 0
+ name StickyNote2
+ label "改变亮度\n"
+ xpos -138
+ ypos 1083
+}
 push $Nc6be3000
 Expression {
  temp_name0 lum
@@ -1473,13 +1483,14 @@ Grade {
 }
 Write {
  channels rgba
- file C:/houdiniBakup/result.mov
+ file D:/houdiniBakup/result.mov
  file_type mov
  mov64_format "mov (QuickTime / MOV)"
  mov64_codec h264
  mov_h264_codec_profile "High 4:2:0 8-bit"
  mov64_pixel_format {{0}}
- mov64_quality Best
+ mov64_quality Custom
+ mov64_advanced 1
  mov64_fast_start true
  mov64_write_timecode true
  mov64_gop_size 12
@@ -1488,32 +1499,35 @@ Write {
  mov64_bitrate_tolerance 0
  mov64_quality_min 1
  mov64_quality_max 1
- first 0
+ first 90
  last 240
  use_limit true
  checkHashOnRead false
- version 21
+ version 24
  ocioColorspace scene_linear
  display default
  view sRGB
  name Write2
- xpos -353
- ypos 1095
+ xpos -343
+ ypos 1104
 }
 Viewer {
- frame 106
+ frame 80
  frame_range 90-240
  frame_range_lock true
  monitorOutNDISenderName "Nuke - prt - Viewer2"
  monitorOutOutputTransform rec709
  name Viewer2
- xpos -422
- ypos 1163
+ xpos -413
+ ypos 1183
 }
-StickyNote {
- inputs 0
- name StickyNote2
- label "改变亮度\n"
- xpos -138
- ypos 1083
+push $Ne80c8000
+Viewer {
+ frame 80
+ frame_range 0-240
+ monitorOutNDISenderName "Nuke - prt - Viewer1"
+ monitorOutOutputTransform rec709
+ name Viewer1
+ xpos -57
+ ypos -20
 }
