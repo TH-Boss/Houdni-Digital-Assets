@@ -15,7 +15,7 @@ define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
                     <page id="Viewer.1"/>
                 </dock>
                 <split size="544"/>
-                <dock id="" activePageId="DAG.1" focus="true">
+                <dock id="" activePageId="DAG.1">
                     <page id="DAG.1"/>
                     <page id="Curve Editor.1"/>
                     <page id="DopeSheet.1"/>
@@ -2020,7 +2020,7 @@ Grade {
 }
 Write {
  channels rgba
- file D:/houdiniBakup/update.mov
+ file D:/houdiniBakup/head.mov
  file_type mov
  mov64_format "mov (QuickTime / MOV)"
  mov64_codec h264
@@ -2037,14 +2037,15 @@ Write {
  mov64_quality_min 1
  mov64_quality_max 1
  first 0
- last 360
+ last 90
  use_limit true
  checkHashOnRead false
- version 30
+ version 31
  ocioColorspace scene_linear
  display default
  view sRGB
  name Write1
+ selected true
  xpos 1131
  ypos -30
 }
