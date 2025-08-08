@@ -11,11 +11,11 @@ define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
             <split size="1894" stretch="1"/>
             <splitter orientation="2">
                 <split size="774"/>
-                <dock id="" activePageId="Viewer.1">
+                <dock id="" activePageId="Viewer.1" focus="true">
                     <page id="Viewer.1"/>
                 </dock>
                 <split size="544"/>
-                <dock id="" activePageId="DAG.1" focus="true">
+                <dock id="" activePageId="DAG.1">
                     <page id="DAG.1"/>
                     <page id="Curve Editor.1"/>
                     <page id="DopeSheet.1"/>
@@ -2036,15 +2036,16 @@ Write {
  mov64_bitrate_tolerance 0
  mov64_quality_min 1
  mov64_quality_max 1
- first 0
+ first 91
  last 360
  use_limit true
  checkHashOnRead false
- version 30
+ version 32
  ocioColorspace scene_linear
  display default
  view sRGB
  name Write1
+ selected true
  xpos 1131
  ypos -30
 }
