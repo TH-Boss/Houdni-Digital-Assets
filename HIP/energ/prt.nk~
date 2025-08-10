@@ -2,7 +2,7 @@
 version 15.1 v5
 define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
 <layout version="1.0">
-    <window x="0" y="0" w="2557" h="1368" screen="0">
+    <window x="0" y="0" w="2557" h="1360" screen="0">
         <splitter orientation="1">
             <split size="40"/>
             <dock id="" hideTitles="1" activePageId="Toolbar.1">
@@ -10,12 +10,11 @@ define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
             </dock>
             <split size="1894" stretch="1"/>
             <splitter orientation="2">
-                <split size="778"/>
+                <split size="774"/>
                 <dock id="" activePageId="Viewer.1">
                     <page id="Viewer.1"/>
-                    <page id="Viewer.2"/>
                 </dock>
-                <split size="548"/>
+                <split size="544"/>
                 <dock id="" activePageId="DAG.1" focus="true">
                     <page id="DAG.1"/>
                     <page id="Curve Editor.1"/>
@@ -34,10 +33,10 @@ define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
 }
 Root {
  inputs 0
- name C:/Users/LG/RiderProjects/ZGameAnalyzers/Houdni-Digital-Assets/HIP/energ/prt.nk
- frame 173
+ name C:/Users/16499/Documents/GitHub/Houdni-Digital-Assets/HIP/energ/prt.nk
+ frame 200
  first_frame 0
- last_frame 240
+ last_frame 360
  lock_range true
  format "2048 1556 0 0 2048 1556 1 2K_Super_35(full-ap)"
  proxy_type scale
@@ -51,40 +50,56 @@ Root {
  logLut Cineon
  floatLut linear
 }
+StickyNote {
+ inputs 0
+ name StickyNote3
+ label "type note here"
+ xpos -965
+ ypos 461
+}
+StickyNote {
+ inputs 0
+ name StickyNote2
+ label "改变亮度\n"
+ xpos -928
+ ypos 710
+}
 Read {
  inputs 0
  file_type exr
- file "C:/houdiniBakup/可以接受的最新/新建文件夹 (2)/energ.A1.####.exr"
- format "1920 1080 0 0 1920 1080 1 HD_1080"
+ file "D:/houdiniBakup/可以接受的最新/新建文件夹 (2)/energ.A1.####.exr"
+ format "3840 2160 0 0 3840 2160 1 UHD_4K"
+ proxy_format "3840 2160 0 0 3840 2160 1 UHD_4K"
  first 0
  last 240
  origfirst 0
  origlast 240
  origset true
  name Read2
- xpos -5
- ypos -18
+ xpos -730
+ ypos -506
 }
+set N95bb3c00 [stack 0]
 Read {
  inputs 0
  file_type exr
- file C:/houdiniBakup/可以接受的最新/循环新版90-240/energ.A1.####.exr
- format "1920 1080 0 0 1920 1080 1 HD_1080"
+ file D:/houdiniBakup/可以接受的最新/循环新版90-240/energ.A1.####.exr
+ format "3840 2160 0 0 3840 2160 1 UHD_4K"
  first 90
  last 240
  origfirst 90
  origlast 240
  origset true
  name Read1
- xpos 238
- ypos -38
+ xpos -496
+ ypos -510
 }
 TimeOffset {
  time_offset -20
  time ""
  name TimeOffset1
- xpos 225
- ypos 91
+ xpos -511
+ ypos -322
 }
 MergeExpression {
  inputs 2
@@ -94,29 +109,29 @@ MergeExpression {
  expr1 Ag*lerp+Bg*(1-lerp)
  expr2 Ab*lerp+Bb*(1-lerp)
  name MergeExpression1
- xpos 70
- ypos 155
+ xpos -666
+ ypos -258
 }
 Read {
  inputs 0
  file_type exr
- file C:/houdiniBakup/可以接受的最新/循环新版90-240/energ.A1.####.exr
- format "1920 1080 0 0 1920 1080 1 HD_1080"
+ file D:/houdiniBakup/可以接受的最新/循环新版90-240/energ.A1.####.exr
+ format "3840 2160 0 0 3840 2160 1 UHD_4K"
  first 90
  last 240
  origfirst 90
  origlast 240
  origset true
  name Read3
- xpos 441
- ypos -9
+ xpos -295
+ ypos -422
 }
 TimeOffset {
  time_offset 130
  time ""
  name TimeOffset3
- xpos 441
- ypos 118
+ xpos -295
+ ypos -295
 }
 MergeExpression {
  inputs 2
@@ -124,56 +139,56 @@ MergeExpression {
  expr1 "frame >= 220 ? Bg:Ag"
  expr2 "frame >= 220 ? Bb :Ab"
  name MergeExpression2
- xpos 231
- ypos 164
+ xpos -505
+ ypos -249
 }
 Grade {
  mix {{"(frame >= 140 && frame <= 150) ? 1 : 0"}}
  name Grade1
- xpos 347
- ypos 210
+ xpos -389
+ ypos -203
 }
 TimeWarp {
  lookup {{"frame <= 240 ? frame : ((x - 240) % 151) + 90" C x140 140 x200 19 x480 480}}
  time ""
  name TimeWarp1
- xpos 338
- ypos 272
+ xpos -398
+ ypos -141
 }
 Crop {
  box {0 0 1920 1080}
  name Crop3
- xpos -53
- ypos 438
+ xpos -789
+ ypos 25
 }
-set N13fce000 [stack 0]
+set N95bfb800 [stack 0]
 Grade {
  white 0.51
  gamma 0.95
  name Grade3
- xpos 105
- ypos 438
+ xpos -631
+ ypos 25
 }
 Shuffle {
  red blue
  green blue
  alpha blue
  name Shuffle3
- xpos 105
- ypos 496
+ xpos -631
+ ypos 83
 }
 Grade {
  blackpoint 0.0005
  white 0.14
  name Grade4
- xpos 105
- ypos 522
+ xpos -631
+ ypos 109
 }
 Group {
  name realGlow5
  tile_color 0xffff00ff
- xpos 105
- ypos 570
+ xpos -639
+ ypos 188
  addUserKnob {20 realGlow}
  addUserKnob {41 output T Plus.output}
  addUserKnob {41 tint T Multiply_tint.value}
@@ -197,7 +212,7 @@ Group {
   ypos 629
   number 1
  }
-set N13fcf000 [stack 0]
+set N95c56800 [stack 0]
  Input {
   inputs 0
   name Inputimage
@@ -209,7 +224,7 @@ set N13fcf000 [stack 0]
   xpos -508
   ypos 571
  }
-set N13fcf800 [stack 0]
+set N95c57000 [stack 0]
  Shuffle {
   in {{{parent.Plus.output}}}
   name Shuffle1
@@ -217,7 +232,7 @@ set N13fcf800 [stack 0]
   xpos -441
   ypos 562
  }
-set N13fcfc00 [stack 0]
+set N95c57400 [stack 0]
  Multiply {
   channels rgb
   value 0.09
@@ -244,43 +259,43 @@ set N13fcfc00 [stack 0]
   xpos -314
   ypos 667
  }
-set N5a00c00 [stack 0]
+set N95c92400 [stack 0]
  Dot {
   name Dot140
   xpos -223
   ypos 667
  }
-set N5a01000 [stack 0]
+set N95c92800 [stack 0]
  Dot {
   name Dot141
   xpos -130
   ypos 667
  }
-set N5a01400 [stack 0]
+set N95c92c00 [stack 0]
  Dot {
   name Dot142
   xpos -34
   ypos 667
  }
-set N5a01800 [stack 0]
+set N95c93000 [stack 0]
  Dot {
   name Dot143
   xpos 57
   ypos 667
  }
-set N5a01c00 [stack 0]
+set N95c93400 [stack 0]
  Dot {
   name Dot144
   xpos 146
   ypos 667
  }
-set N5a26000 [stack 0]
+set N95c93800 [stack 0]
  Dot {
   name Dot145
   xpos 238
   ypos 667
  }
-set N5a26400 [stack 0]
+set N95c93c00 [stack 0]
  Dot {
   name Dot146
   xpos 329
@@ -307,7 +322,7 @@ set N5a26400 [stack 0]
   xpos 329
   ypos 925
  }
-push $N5a26400
+push $N95c93c00
  Blur {
   channels rgba
   size {{parent.size*64}}
@@ -329,7 +344,7 @@ push $N5a26400
   xpos 238
   ypos 901
  }
-push $N5a26000
+push $N95c93800
  Blur {
   channels rgba
   size {{parent.size*32}}
@@ -351,7 +366,7 @@ push $N5a26000
   xpos 146
   ypos 877
  }
-push $N5a01c00
+push $N95c93400
  Blur {
   channels rgba
   size {{parent.size*16}}
@@ -373,7 +388,7 @@ push $N5a01c00
   xpos 57
   ypos 853
  }
-push $N5a01800
+push $N95c93000
  Blur {
   channels rgba
   size {{parent.size*8}}
@@ -395,7 +410,7 @@ push $N5a01800
   xpos -34
   ypos 829
  }
-push $N5a01400
+push $N95c92c00
  Blur {
   channels rgba
   size {{parent.size*4}}
@@ -417,7 +432,7 @@ push $N5a01400
   xpos -130
   ypos 805
  }
-push $N5a01000
+push $N95c92800
  Blur {
   channels rgba
   size {{parent.size*2}}
@@ -439,7 +454,7 @@ push $N5a01000
   xpos -223
   ypos 781
  }
-push $N5a00c00
+push $N95c92400
  Blur {
   channels rgba
   size {{parent.size}}
@@ -505,7 +520,7 @@ push $N5a00c00
   xpos -348
   ypos 922
  }
-push $N13fcfc00
+push $N95c57400
  Multiply {
   channels rgba
   value {{1-parent.effect_only}}
@@ -513,7 +528,7 @@ push $N13fcfc00
   xpos -441
   ypos 683
  }
-push $N13fcf800
+push $N95c57000
  ShuffleCopy {
   inputs 2
   in2 none
@@ -534,14 +549,14 @@ push $N13fcf800
   xpos -542
   ypos 922
  }
-set N5b20c00 [stack 0]
+set N95daa400 [stack 0]
  Output {
   name Output
   xpos -542
   ypos 1043
  }
-push $N13fcf000
-push $N5b20c00
+push $N95c56800
+push $N95daa400
  Viewer {
   inputs 2
   fps 30
@@ -552,33 +567,33 @@ push $N5b20c00
   ypos 1119
  }
 end_group
-push $N13fce000
+push $N95bfb800
 Grade {
  white 0.9
  gamma 0.94
  name Grade23
- xpos -53
- ypos 474
+ xpos -789
+ ypos 61
 }
 ColorCorrect {
  saturation 0.8
  gain {1 0.851427 0.642909 1}
  gain_panelDropped true
  name ColorCorrect10
- xpos -53
- ypos 508
+ xpos -789
+ ypos 95
 }
 Shuffle {
  alpha red
  name Shuffle11
- xpos -53
- ypos 538
+ xpos -789
+ ypos 125
 }
 Group {
  name realGlow1
  tile_color 0xffff00ff
- xpos -53
- ypos 572
+ xpos -789
+ ypos 197
  addUserKnob {20 realGlow}
  addUserKnob {41 output T Plus.output}
  addUserKnob {41 tint T Multiply_tint.value}
@@ -602,7 +617,7 @@ Group {
   ypos 629
   number 1
  }
-set N5b9e800 [stack 0]
+set N95e34000 [stack 0]
  Input {
   inputs 0
   name Inputimage
@@ -614,7 +629,7 @@ set N5b9e800 [stack 0]
   xpos -508
   ypos 571
  }
-set N5b9f000 [stack 0]
+set N95e34800 [stack 0]
  Shuffle {
   in {{{parent.Plus.output}}}
   name Shuffle1
@@ -622,7 +637,7 @@ set N5b9f000 [stack 0]
   xpos -441
   ypos 562
  }
-set N5b9f400 [stack 0]
+set N95e34c00 [stack 0]
  Multiply {
   channels rgb
   value 0.11
@@ -649,43 +664,43 @@ set N5b9f400 [stack 0]
   xpos -314
   ypos 667
  }
-set N5be0400 [stack 0]
+set N95e35c00 [stack 0]
  Dot {
   name Dot140
   xpos -223
   ypos 667
  }
-set N5be0800 [stack 0]
+set N95e5a000 [stack 0]
  Dot {
   name Dot141
   xpos -130
   ypos 667
  }
-set N5be0c00 [stack 0]
+set N95e5a400 [stack 0]
  Dot {
   name Dot142
   xpos -34
   ypos 667
  }
-set N5be1000 [stack 0]
+set N95e5a800 [stack 0]
  Dot {
   name Dot143
   xpos 57
   ypos 667
  }
-set N5be1400 [stack 0]
+set N95e5ac00 [stack 0]
  Dot {
   name Dot144
   xpos 146
   ypos 667
  }
-set N5be1800 [stack 0]
+set N95e5b000 [stack 0]
  Dot {
   name Dot145
   xpos 238
   ypos 667
  }
-set N5be1c00 [stack 0]
+set N95e5b400 [stack 0]
  Dot {
   name Dot146
   xpos 329
@@ -712,7 +727,7 @@ set N5be1c00 [stack 0]
   xpos 329
   ypos 925
  }
-push $N5be1c00
+push $N95e5b400
  Blur {
   channels rgba
   size {{parent.size*64}}
@@ -734,7 +749,7 @@ push $N5be1c00
   xpos 238
   ypos 901
  }
-push $N5be1800
+push $N95e5b000
  Blur {
   channels rgba
   size {{parent.size*32}}
@@ -756,7 +771,7 @@ push $N5be1800
   xpos 146
   ypos 877
  }
-push $N5be1400
+push $N95e5ac00
  Blur {
   channels rgba
   size {{parent.size*16}}
@@ -778,7 +793,7 @@ push $N5be1400
   xpos 57
   ypos 853
  }
-push $N5be1000
+push $N95e5a800
  Blur {
   channels rgba
   size {{parent.size*8}}
@@ -800,7 +815,7 @@ push $N5be1000
   xpos -34
   ypos 829
  }
-push $N5be0c00
+push $N95e5a400
  Blur {
   channels rgba
   size {{parent.size*4}}
@@ -822,7 +837,7 @@ push $N5be0c00
   xpos -130
   ypos 805
  }
-push $N5be0800
+push $N95e5a000
  Blur {
   channels rgba
   size {{parent.size*2}}
@@ -844,7 +859,7 @@ push $N5be0800
   xpos -223
   ypos 781
  }
-push $N5be0400
+push $N95e35c00
  Blur {
   channels rgba
   size {{parent.size}}
@@ -910,7 +925,7 @@ push $N5be0400
   xpos -348
   ypos 922
  }
-push $N5b9f400
+push $N95e34c00
  Multiply {
   channels rgba
   value {{1-parent.effect_only}}
@@ -918,7 +933,7 @@ push $N5b9f400
   xpos -441
   ypos 683
  }
-push $N5b9f000
+push $N95e34800
  ShuffleCopy {
   inputs 2
   in2 none
@@ -939,14 +954,14 @@ push $N5b9f000
   xpos -542
   ypos 922
  }
-set N5cf8400 [stack 0]
+set N95f23c00 [stack 0]
  Output {
   name Output
   xpos -542
   ypos 1043
  }
-push $N5b9e800
-push $N5cf8400
+push $N95e34000
+push $N95f23c00
  Viewer {
   inputs 2
   fps 30
@@ -961,150 +976,193 @@ Merge2 {
  inputs 2
  operation plus
  name Merge1
- xpos -56
- ypos 697
+ xpos -792
+ ypos 284
 }
-set N5d23400 [stack 0]
-ColorCorrect {
- saturation {0.132618 1.2 0 1}
- saturation_panelDropped true
- name ColorCorrect1
- xpos 237
- ypos 754
+Expression {
+ temp_name0 lum
+ temp_expr0 "0.299 * r + 0.587 * g + 0.114 * b"
+ expr0 lum
+ expr1 0
+ expr2 0
+ name Expression1
+ xpos -1053
+ ypos 391
 }
-set N5d23800 [stack 0]
-ColorCorrect {
- saturation {0 3.1 4 2.48}
- saturation_panelDropped true
- contrast 1.42
- name ColorCorrect2
- xpos 538
- ypos 770
-}
-push 0
-Merge2 {
- inputs 2
- name Merge3
- xpos 347
- ypos 921
-}
-set N5d80000 [stack 0]
-Dot {
- name Dot3
- xpos 520
- ypos 948
-}
-push $N5d80000
-Copy {
- inputs 2
- from0 rgba.alpha
- to0 rgba.alpha
- name Copy2
- xpos 347
- ypos 1005
-}
-CheckerBoard2 {
- inputs 0
- format "1920 1080 0 0 1920 1080 1 HD_1080"
- boxsize 16.5
- name CheckerBoard1
- xpos 721
- ypos 918
+Shuffle2 {
+ fromInput1 {{0} B}
+ out1 rgb
+ fromInput2 {{0} B}
+ mappings "3 rgba.red 0 0 rgba.red 0 0 rgba.red 0 0 rgba.green 0 1 rgba.red 0 0 rgba.blue 0 2"
+ name Shuffle1
+ xpos -1059
+ ypos 425
 }
 Grade {
- blackpoint 0.17
- white 0.025
- name Grade14
- label "mix:\[value mix]"
- xpos 721
- ypos 1107
+ blackpoint -0.018
+ whitepoint 0.055
+ black 0.065
+ white 1.08
+ multiply 0.155
+ add -0.17
+ gamma 1.34
+ name Grade2
+ xpos -1071
+ ypos 461
 }
-Merge2 {
- inputs 2
- name Merge41
- xpos 347
- ypos 1112
-}
-Write {
- file F:/拉丝汇聚粒子.mov
- file_type mov
- mov64_format "mov (QuickTime / MOV)"
- mov64_codec appr
- mov_h264_codec_profile "High 4:2:0 8-bit"
- mov64_pixel_format {{0}}
- mov64_quality High
- mov64_fast_start true
- mov64_write_timecode true
- mov64_gop_size 12
- mov64_b_frames 0
- mov64_bitrate 20000
- mov64_bitrate_tolerance 4000000
- mov64_quality_min 1
- mov64_quality_max 3
- last 120
- use_limit true
- checkHashOnRead false
- version 3
- in_colorspace scene_linear
- out_colorspace scene_linear
- ocioColorspace scene_linear
- display default
- view sRGB
- name Write1
- xpos 347
- ypos 1237
+Invert {
+ name Invert1
+ xpos -1078
+ ypos 516
 }
 Read {
  inputs 0
  file_type exr
- file F:/houdini粒子能量/render/energy_attract.S.####.exr
+ file D:/houdiniBakup/未标题-1.exr
  format "1920 1080 0 0 1920 1080 1 HD_1080"
- last 120
- origlast 120
+ origset true
+ name Read6
+ xpos -632
+ ypos 387
+}
+MergeExpression {
+ inputs 2
+ expr0 A.r
+ expr1 A.g
+ expr2 A.b
+ channel3 alpha
+ expr3 A.a*B.r
+ name MergeExpression3
+ xpos -932
+ ypos 599
+}
+Premult {
+ name Premult1
+ xpos -863
+ ypos 661
+}
+Grade {
+ multiply 0.5
+ name Grade6
+ xpos -1006
+ ypos 690
+}
+Write {
+ channels rgba
+ file D:/houdiniBakup/result.mov
+ file_type mov
+ mov64_format "mov (QuickTime / MOV)"
+ mov64_codec h264
+ mov_h264_codec_profile "High 4:2:0 8-bit"
+ mov64_pixel_format {{0}}
+ mov64_quality Custom
+ mov64_advanced 1
+ mov64_fast_start true
+ mov64_write_timecode true
+ mov64_gop_size 12
+ mov64_b_frames 0
+ mov64_bitrate 50000
+ mov64_bitrate_tolerance 0
+ mov64_quality_min 1
+ mov64_quality_max 1
+ first 90
+ last 240
+ use_limit true
+ checkHashOnRead false
+ version 24
+ ocioColorspace scene_linear
+ display default
+ view sRGB
+ name Write2
+ xpos -1133
+ ypos 731
+}
+Viewer {
+ frame 80
+ frame_range 90-240
+ frame_range_lock true
+ monitorOutNDISenderName "Nuke - prt - Viewer2"
+ name Viewer2
+ xpos -1203
+ ypos 810
+}
+push $N95bb3c00
+Viewer {
+ frame 80
+ frame_range 0-240
+ monitorOutNDISenderName "Nuke - prt - Viewer1"
+ name Viewer3
+ xpos -847
+ ypos -393
+}
+StickyNote {
+ inputs 0
+ name StickyNote4
+ label "改变亮度\n"
+ xpos 1337
+ ypos 23
+}
+StickyNote {
+ inputs 0
+ name StickyNote1
+ label "type note here"
+ xpos 1300
+ ypos -226
+}
+Read {
+ inputs 0
+ file_type exr
+ file C:/Users/16499/Documents/GitHub/Houdni-Digital-Assets/HIP/energ/render/energ.A1.####.exr
+ format "3840 2160 0 0 3840 2160 1 UHD_4K"
+ proxy_format "3840 2160 0 0 3840 2160 1 UHD_4K"
+ first 0
+ last 360
+ origfirst 0
+ origlast 360
  origset true
  name Read4
- xpos 728
- ypos 396
+ xpos 1292
+ ypos -730
 }
+Crop {
+ box {0 0 3840 2160}
+ name Crop1
+ xpos 1476
+ ypos -662
+}
+set Nb46d0800 [stack 0]
 Grade {
- white 0.64
- multiply 4
- gamma 0.76
- name Grade22
- xpos 535
- ypos 383
-}
-ColorCorrect {
- saturation 0.8
- gain {0.988771 1 0.642909 1}
- gain_panelDropped true
- name ColorCorrect3
- xpos 535
- ypos 432
-}
-Grade {
- whitepoint 0.76
- white 1.54
+ white 0.51
+ gamma 0.95
  name Grade5
- xpos 535
- ypos 484
+ xpos 1634
+ ypos -662
 }
 Shuffle {
- alpha red
- name Shuffle6
- xpos 535
- ypos 516
+ red blue
+ green blue
+ alpha blue
+ name Shuffle2
+ xpos 1634
+ ypos -618
+}
+Grade {
+ blackpoint 0.0005
+ white 0.14
+ name Grade7
+ xpos 1634
+ ypos -578
 }
 Group {
  name realGlow2
  tile_color 0xffff00ff
- xpos 535
- ypos 554
+ xpos 1634
+ ypos -503
  addUserKnob {20 realGlow}
  addUserKnob {41 output T Plus.output}
  addUserKnob {41 tint T Multiply_tint.value}
  addUserKnob {7 brightness R 0 5}
- brightness 1.42
+ brightness 0.32
  addUserKnob {7 falloff R 1 5}
  falloff 1
  addUserKnob {7 saturation}
@@ -1112,7 +1170,7 @@ Group {
  addUserKnob {6 effect_only l "effect only" +STARTLINE}
  addUserKnob {26 ""}
  addUserKnob {7 size R 0 100}
- size 2.5
+ size 8
  addUserKnob {41 mix T Plus.mix}
  addUserKnob {6 mask +STARTLINE}
 }
@@ -1123,7 +1181,7 @@ Group {
   ypos 629
   number 1
  }
-set N5dcd400 [stack 0]
+set Nb46d1800 [stack 0]
  Input {
   inputs 0
   name Inputimage
@@ -1135,7 +1193,7 @@ set N5dcd400 [stack 0]
   xpos -508
   ypos 571
  }
-set N5dcdc00 [stack 0]
+set Nab6ac000 [stack 0]
  Shuffle {
   in {{{parent.Plus.output}}}
   name Shuffle1
@@ -1143,10 +1201,10 @@ set N5dcdc00 [stack 0]
   xpos -441
   ypos 562
  }
-set N5e3a000 [stack 0]
+set Nab6ac400 [stack 0]
  Multiply {
   channels rgb
-  value 0.045
+  value 0.09
   name Multiply_tint
   xpos -348
   ypos 568
@@ -1170,43 +1228,43 @@ set N5e3a000 [stack 0]
   xpos -314
   ypos 667
  }
-set N5e3b000 [stack 0]
+set Nab6ad400 [stack 0]
  Dot {
   name Dot140
   xpos -223
   ypos 667
  }
-set N5e3b400 [stack 0]
+set Nab6ad800 [stack 0]
  Dot {
   name Dot141
   xpos -130
   ypos 667
  }
-set N5e3b800 [stack 0]
+set Nab6adc00 [stack 0]
  Dot {
   name Dot142
   xpos -34
   ypos 667
  }
-set N5e3bc00 [stack 0]
+set Na3a9e000 [stack 0]
  Dot {
   name Dot143
   xpos 57
   ypos 667
  }
-set N5e66000 [stack 0]
+set Na3a9e400 [stack 0]
  Dot {
   name Dot144
   xpos 146
   ypos 667
  }
-set N5e66400 [stack 0]
+set Na3a9e800 [stack 0]
  Dot {
   name Dot145
   xpos 238
   ypos 667
  }
-set N5e66800 [stack 0]
+set Na3a9ec00 [stack 0]
  Dot {
   name Dot146
   xpos 329
@@ -1233,7 +1291,7 @@ set N5e66800 [stack 0]
   xpos 329
   ypos 925
  }
-push $N5e66800
+push $Na3a9ec00
  Blur {
   channels rgba
   size {{parent.size*64}}
@@ -1255,7 +1313,7 @@ push $N5e66800
   xpos 238
   ypos 901
  }
-push $N5e66400
+push $Na3a9e800
  Blur {
   channels rgba
   size {{parent.size*32}}
@@ -1277,7 +1335,7 @@ push $N5e66400
   xpos 146
   ypos 877
  }
-push $N5e66000
+push $Na3a9e400
  Blur {
   channels rgba
   size {{parent.size*16}}
@@ -1299,7 +1357,7 @@ push $N5e66000
   xpos 57
   ypos 853
  }
-push $N5e3bc00
+push $Na3a9e000
  Blur {
   channels rgba
   size {{parent.size*8}}
@@ -1321,7 +1379,7 @@ push $N5e3bc00
   xpos -34
   ypos 829
  }
-push $N5e3b800
+push $Nab6adc00
  Blur {
   channels rgba
   size {{parent.size*4}}
@@ -1343,7 +1401,7 @@ push $N5e3b800
   xpos -130
   ypos 805
  }
-push $N5e3b400
+push $Nab6ad800
  Blur {
   channels rgba
   size {{parent.size*2}}
@@ -1365,7 +1423,7 @@ push $N5e3b400
   xpos -223
   ypos 781
  }
-push $N5e3b000
+push $Nab6ad400
  Blur {
   channels rgba
   size {{parent.size}}
@@ -1431,7 +1489,7 @@ push $N5e3b000
   xpos -348
   ypos 922
  }
-push $N5e3a000
+push $Nab6ac400
  Multiply {
   channels rgba
   value {{1-parent.effect_only}}
@@ -1439,7 +1497,7 @@ push $N5e3a000
   xpos -441
   ypos 683
  }
-push $N5dcdc00
+push $Nab6ac000
  ShuffleCopy {
   inputs 2
   in2 none
@@ -1460,14 +1518,14 @@ push $N5dcdc00
   xpos -542
   ypos 922
  }
-set N8c39000 [stack 0]
+set Na3ad3400 [stack 0]
  Output {
   name Output
   xpos -542
   ypos 1043
  }
-push $N5dcd400
-push $N8c39000
+push $Nb46d1800
+push $Na3ad3400
  Viewer {
   inputs 2
   fps 30
@@ -1478,111 +1536,497 @@ push $N8c39000
   ypos 1119
  }
 end_group
-push $N5d23400
+push $Nb46d0800
+Grade {
+ white 0.9
+ gamma 0.94
+ name Grade8
+ xpos 1476
+ ypos -626
+}
+ColorCorrect {
+ saturation 0.8
+ gain {1 0.851427 0.642909 1}
+ gain_panelDropped true
+ name ColorCorrect1
+ xpos 1476
+ ypos -592
+}
+Shuffle {
+ alpha red
+ name Shuffle4
+ xpos 1476
+ ypos -562
+}
+Group {
+ name realGlow3
+ tile_color 0xffff00ff
+ xpos 1498
+ ypos -497
+ addUserKnob {20 realGlow}
+ addUserKnob {41 output T Plus.output}
+ addUserKnob {41 tint T Multiply_tint.value}
+ addUserKnob {7 brightness R 0 5}
+ brightness 2.78
+ addUserKnob {7 falloff R 1 5}
+ falloff 1
+ addUserKnob {7 saturation}
+ saturation 1
+ addUserKnob {6 effect_only l "effect only" +STARTLINE}
+ addUserKnob {26 ""}
+ addUserKnob {7 size R 0 100}
+ size 17.5
+ addUserKnob {41 mix T Plus.mix}
+ addUserKnob {6 mask +STARTLINE}
+}
+ Input {
+  inputs 0
+  name Inputmask
+  xpos -231
+  ypos 629
+  number 1
+ }
+set Na3c29000 [stack 0]
+ Input {
+  inputs 0
+  name Inputimage
+  xpos -542
+  ypos 482
+ }
+ Dot {
+  name Dot127
+  xpos -508
+  ypos 571
+ }
+set Na3c29800 [stack 0]
+ Shuffle {
+  in {{{parent.Plus.output}}}
+  name Shuffle1
+  label "\[value in]"
+  xpos -441
+  ypos 562
+ }
+set Na3c29c00 [stack 0]
+ Multiply {
+  channels rgb
+  value 0.11
+  name Multiply_tint
+  xpos -348
+  ypos 568
+ }
+ Saturation {
+  saturation {{parent.saturation}}
+  name Saturation3
+  xpos -348
+  ypos 592
+ }
+ Merge2 {
+  inputs 2
+  operation mask
+  name Merge1
+  xpos -348
+  ypos 629
+  disable {{1-parent.mask}}
+ }
+ Dot {
+  name Dot128
+  xpos -314
+  ypos 667
+ }
+set Naa194c00 [stack 0]
+ Dot {
+  name Dot140
+  xpos -223
+  ypos 667
+ }
+set Naa195000 [stack 0]
+ Dot {
+  name Dot141
+  xpos -130
+  ypos 667
+ }
+set Naa195400 [stack 0]
+ Dot {
+  name Dot142
+  xpos -34
+  ypos 667
+ }
+set Naa195800 [stack 0]
+ Dot {
+  name Dot143
+  xpos 57
+  ypos 667
+ }
+set Naa195c00 [stack 0]
+ Dot {
+  name Dot144
+  xpos 146
+  ypos 667
+ }
+set Na9a78000 [stack 0]
+ Dot {
+  name Dot145
+  xpos 238
+  ypos 667
+ }
+set Na9a78400 [stack 0]
+ Dot {
+  name Dot146
+  xpos 329
+  ypos 667
+ }
+ Blur {
+  channels rgba
+  size {{parent.size*128}}
+  name Blur8
+  label "\[value size]"
+  xpos 295
+  ypos 685
+ }
+ Multiply {
+  channels rgba
+  value {{parent.brightness/(pow(parent.falloff,7))}}
+  name Multiply82
+  label "\[value value]"
+  xpos 295
+  ypos 721
+ }
+ Dot {
+  name Dot218
+  xpos 329
+  ypos 925
+ }
+push $Na9a78400
+ Blur {
+  channels rgba
+  size {{parent.size*64}}
+  name Blur7
+  label "\[value size]"
+  xpos 204
+  ypos 685
+ }
+ Multiply {
+  channels rgba
+  value {{parent.brightness/(pow(parent.falloff,6))}}
+  name Multiply78
+  label "\[value value]"
+  xpos 204
+  ypos 721
+ }
+ Dot {
+  name Dot204
+  xpos 238
+  ypos 901
+ }
+push $Na9a78000
+ Blur {
+  channels rgba
+  size {{parent.size*32}}
+  name Blur6
+  label "\[value size]"
+  xpos 112
+  ypos 685
+ }
+ Multiply {
+  channels rgba
+  value {{parent.brightness/(pow(parent.falloff,5))}}
+  name Multiply77
+  label "\[value value]"
+  xpos 112
+  ypos 721
+ }
+ Dot {
+  name Dot189
+  xpos 146
+  ypos 877
+ }
+push $Naa195c00
+ Blur {
+  channels rgba
+  size {{parent.size*16}}
+  name Blur5
+  label "\[value size]"
+  xpos 23
+  ypos 685
+ }
+ Multiply {
+  channels rgba
+  value {{parent.brightness/(pow(parent.falloff,4))}}
+  name Multiply76
+  label "\[value value]"
+  xpos 23
+  ypos 721
+ }
+ Dot {
+  name Dot176
+  xpos 57
+  ypos 853
+ }
+push $Naa195800
+ Blur {
+  channels rgba
+  size {{parent.size*8}}
+  name Blur4
+  label "\[value size]"
+  xpos -68
+  ypos 685
+ }
+ Multiply {
+  channels rgba
+  value {{parent.brightness/(pow(parent.falloff,3))}}
+  name Multiply2
+  label "\[value value]"
+  xpos -68
+  ypos 721
+ }
+ Dot {
+  name Dot160
+  xpos -34
+  ypos 829
+ }
+push $Naa195400
+ Blur {
+  channels rgba
+  size {{parent.size*4}}
+  name Blur3
+  label "\[value size]"
+  xpos -164
+  ypos 685
+ }
+ Multiply {
+  channels rgba
+  value {{parent.brightness/(pow(parent.falloff,2))}}
+  name Multiply74
+  label "\[value value]"
+  xpos -164
+  ypos 721
+ }
+ Dot {
+  name Dot151
+  xpos -130
+  ypos 805
+ }
+push $Naa195000
+ Blur {
+  channels rgba
+  size {{parent.size*2}}
+  name Blur2
+  label "\[value size]"
+  xpos -257
+  ypos 685
+ }
+ Multiply {
+  channels rgba
+  value {{parent.brightness/parent.falloff}}
+  name Multiply1
+  label "\[value value]"
+  xpos -257
+  ypos 721
+ }
+ Dot {
+  name Dot150
+  xpos -223
+  ypos 781
+ }
+push $Naa194c00
+ Blur {
+  channels rgba
+  size {{parent.size}}
+  name Blur1
+  label "\[value size]"
+  xpos -348
+  ypos 685
+ }
+ Multiply {
+  channels rgba
+  value {{parent.brightness}}
+  name Multiply73
+  label "\[value value]"
+  xpos -348
+  ypos 721
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  name Plus21
+  xpos -348
+  ypos 778
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  name Plus23
+  xpos -348
+  ypos 802
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  name Plus24
+  xpos -348
+  ypos 826
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  name Plus25
+  xpos -348
+  ypos 850
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  name Plus26
+  xpos -348
+  ypos 874
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  name Plus32
+  xpos -348
+  ypos 898
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  name Plus33
+  xpos -348
+  ypos 922
+ }
+push $Na3c29c00
+ Multiply {
+  channels rgba
+  value {{1-parent.effect_only}}
+  name Multiply3
+  xpos -441
+  ypos 683
+ }
+push $Na3c29800
+ ShuffleCopy {
+  inputs 2
+  in2 none
+  red red
+  green green
+  blue blue
+  out {{{parent.Plus.output}}}
+  name ShuffleCopy1
+  xpos -542
+  ypos 683
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  Bchannels {{{parent.Plus.output}}}
+  output rgb
+  name Plus
+  xpos -542
+  ypos 922
+ }
+set Na854cc00 [stack 0]
+ Output {
+  name Output
+  xpos -542
+  ypos 1043
+ }
+push $Na3c29000
+push $Na854cc00
+ Viewer {
+  inputs 2
+  fps 30
+  input_number 1
+  input_process false
+  name Viewer1
+  xpos -542
+  ypos 1119
+ }
+end_group
 Merge2 {
  inputs 2
  operation plus
  name Merge2
- xpos 535
- ypos 605
+ xpos 1473
+ ypos -403
 }
-push $N5d23800
-ColorCorrect {
- saturation {0 0 1.6 2.48}
- saturation_panelDropped true
- contrast 1.42
- name ColorCorrect4
- xpos 217
- ypos 865
-}
-Write {
- file C:/houdiniBakup/result.mov
- file_type mov
- mov64_format "mov (QuickTime / MOV)"
- mov64_codec h264
- mov_h264_codec_profile "High 4:2:0 8-bit"
- mov64_pixel_format {{0}}
- mov64_quality Best
- mov64_fast_start true
- mov64_write_timecode true
- mov64_gop_size 12
- mov64_b_frames 0
- mov64_bitrate 50000
- mov64_bitrate_tolerance 0
- mov64_quality_min 1
- mov64_quality_max 1
- first 0
- last 240
- use_limit true
- checkHashOnRead false
- version 15
- ocioColorspace scene_linear
- display default
- view sRGB
- name Write4
- xpos 151
- ypos 978
-}
-Viewer {
- frame 173
- frame_range 0-240
- monitorOutNDISenderName "Nuke - prt - Viewer3"
- monitorOutOutputTransform rec709
- name Viewer3
- xpos 90
- ypos 1047
-}
-push $N5d23400
 Expression {
  temp_name0 lum
  temp_expr0 "0.299 * r + 0.587 * g + 0.114 * b"
  expr0 lum
  expr1 0
  expr2 0
- name Expression1
- xpos -317
- ypos 804
+ name Expression2
+ xpos 1213
+ ypos -296
 }
 Shuffle2 {
  fromInput1 {{0} B}
  out1 rgb
  fromInput2 {{0} B}
  mappings "3 rgba.red 0 0 rgba.red 0 0 rgba.red 0 0 rgba.green 0 1 rgba.red 0 0 rgba.blue 0 2"
- name Shuffle1
- xpos -323
- ypos 838
+ name Shuffle5
+ xpos 1206
+ ypos -262
 }
 Grade {
  blackpoint -0.018
- whitepoint 0.105
+ whitepoint 0.055
  black 0.065
  white 1.08
  multiply 0.155
  add -0.17
- gamma 1.68
- name Grade2
- xpos -335
- ypos 874
+ gamma 1.34
+ name Grade9
+ xpos 1194
+ ypos -226
 }
 Invert {
- name Invert1
- xpos -342
- ypos 929
+ name Invert2
+ xpos 1187
+ ypos -171
+}
+Read {
+ inputs 0
+ file_type exr
+ file D:/houdiniBakup/未标题-2.exr
+ format "3840 2160 0 0 3840 2160 1 UHD_4K"
+ proxy_format "3840 2160 0 0 3840 2160 1 UHD_4K"
+ origset true
+ name Read5
+ xpos 1633
+ ypos -301
+}
+MergeExpression {
+ inputs 2
+ expr0 A.r
+ expr1 A.g
+ expr2 A.b
+ channel3 alpha
+ expr3 A.a*B.r
+ name MergeExpression4
+ xpos 1333
+ ypos -88
+}
+Premult {
+ name Premult2
+ xpos 1402
+ ypos -26
 }
 Grade {
  multiply 0.5
- name Grade6
- xpos -334
- ypos 1005
+ name Grade10
+ xpos 1259
+ ypos 3
 }
 Write {
- file C:/houdiniBakup/result.mov
+ channels rgba
+ file D:/houdiniBakup/update.mov
  file_type mov
  mov64_format "mov (QuickTime / MOV)"
  mov64_codec h264
  mov_h264_codec_profile "High 4:2:0 8-bit"
  mov64_pixel_format {{0}}
- mov64_quality Best
+ mov64_quality Custom
+ mov64_advanced 1
  mov64_fast_start true
  mov64_write_timecode true
  mov64_gop_size 12
@@ -1591,39 +2035,24 @@ Write {
  mov64_bitrate_tolerance 0
  mov64_quality_min 1
  mov64_quality_max 1
- first 0
- last 240
+ first 90
+ last 360
  use_limit true
  checkHashOnRead false
- version 20
+ version 27
  ocioColorspace scene_linear
  display default
  view sRGB
- name Write2
- xpos -388
- ypos 1080
+ name Write1
+ xpos 1132
+ ypos 44
 }
 Viewer {
- frame 173
- frame_range 90-240
- frame_range_lock true
- monitorOutNDISenderName "Nuke - prt - Viewer2"
+ frame 200
+ frame_range 0-360
+ monitorOutNDISenderName "Nuke - untitled - Viewer1"
  monitorOutOutputTransform rec709
- name Viewer2
- xpos -425
- ypos 1179
-}
-StickyNote {
- inputs 0
- name StickyNote2
- label "改变亮度\n"
- xpos -233
- ypos 990
-}
-StickyNote {
- inputs 0
- name StickyNote1
- label "反向\n"
- xpos -230
- ypos 933
+ name Viewer1
+ xpos 1132
+ ypos 144
 }
